@@ -1,4 +1,6 @@
-package med.voll.api;
+package med.voll.api.controller;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.transaction.Transactional;
+import med.voll.api.domain.medico.DadosCadastroMedico;
+import med.voll.api.domain.medico.Medico;
+import med.voll.api.domain.medico.MedicoRepository;
 
 @RestController
 @RequestMapping ("/medico")
@@ -29,12 +34,17 @@ public class MedicoController {
         }
     
     @GetMapping
-        public void listar() {
+        public List<Medico>listar() {
+            List<Medico> medicos = repository.findAll();
+               return medicos;  
+
 
         }
         
     @PutMapping
-        public void atualizar() {
+        public void atualizar(@RequestBody DadosAtualizacaoMedico dados) {
+            var medico = repository.getReferenceById(dados.id());
+                medico.atualizarMedico(dados);
 
         } 
 

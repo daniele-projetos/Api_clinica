@@ -1,4 +1,4 @@
-package med.voll.api;
+package med.voll.api.domain.medico;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,5 +34,15 @@ this.telefone =dados.telefone();
 this.crm = dados.crm();
 
 }  
+
+public  void atualizarMedico(DadosAtualizacaoMedico dados){
+   if (dados.nome() != null){
+      this.nome = dados.nome();
+
+   }
+
+
+}
+
 
 }
