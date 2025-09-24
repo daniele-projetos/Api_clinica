@@ -1,5 +1,17 @@
 package med.voll.api;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
-public record DadosCadastroMedico() {
+public record DadosCadastroMedico(
+    @NotBlank
+    String nome,
+    @NotBlank
+    @Email
+    String email,
+    @NotBlank
+    String telefone,
+    @NotBlank
+    String crm
+) {
 
 }
